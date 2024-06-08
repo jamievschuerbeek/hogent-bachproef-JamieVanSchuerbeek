@@ -26,5 +26,68 @@
 %% Maak voor elke fase (behalve het literatuuronderzoek) een NIEUW HOOFDSTUK aan
 %% en geef het een gepaste titel.
 
-\lipsum[21-25]
+In dit hoofdstuk worden alle fasen opgelijst en uitgelegd die worden uitgevoerd in dit onderzoek. Dit begint bij de literatuurstudie en gaat verder naar de selectie van de tools. Daarna wordt de proof of concept uitgebreider uitgelegd en tot slot de reflectie op het resultaat.
 
+\section{Literatuurstudie}
+
+In de literatuurstudie worden de verschillende onderwerpen die relevant zijn voor het onderzoek opgelijst en verder uitgelegd. Op deze manier kan er een goede basiskennis opgebouwd worden over de verder besproken onderwerpen. Verder wordt in de literatuurstudie ook een oplijsting gemaakt van de verschillende tools die gebruikt kunnen worden om de proof of concept verder uit te bouwen. Deze lijst is geselecteerd op basis van de tools die SAP zelf aanbied en de libraries die op github aangeboden worden die de meeste sterren hebben. Aan de hand van deze resultaten kan er een keuze gemaakt worden die gebruikt worden voor de proof of concept. De keuze van deze tools kan van een aantal factoren afhangen, namelijk: benodigde programmertaal, beschikbare documentatie, eventuele beperkingen met de open source license, \ldots
+
+\section{Selectie van geschikte tools}
+
+Voordat er een proof of concept kan gemaakt worden moet er eerst een selectie gemaakt worden van de geschikte tools die gebruikt moeten worden. De keuze van de uiteindelijke tools wordt gedaan op basis van een aantal factoren die belangrijk zijn bij het maken van de uiteindelijke keuze.
+Deze factoren zijn de volgende: 
+
+%-	Verschillende prijzen
+%-	SAP-geleverde oplossingen
+%-	Kwaliteit
+%-	Proces volume
+%-	Mogelijke integratie met SAP platformen
+%-	Connectiviteit
+%-	Ease of use
+
+\begin{itemize}
+    \item Prijs van de tool
+    \item Kwaliteit van het resultaat
+    %\item De proces volume
+    \item mogelijkheid om te integreren met SAP platformen
+    \item Gebruiksvriendelijkheid
+\end{itemize}
+
+%TODO: Deze nog ff fixen. footnote werkt niet...
+\begin{table}[h]
+    \centering
+    \tiny
+    \begin{tabular}{|c|c|c|c|}
+        \toprule
+        factor & \textbf{SAP Business Entity Recognition}\footnote{data uit documentatie: \url{https://help.sap.com/docs/business-entity-recognition/business-entity-recognition/}} & \textbf{Snips NLU}\footnote{data uit documentatie: \url{https://snips-nlu.readthedocs.io/}} & \textbf{MITIE}\footnote{data uit de documentatie: \url{https://github.com/mit-nlp/MITIE/tree/master}} \\
+        \midrule
+        \textbf{Gebruiksgemak}\footnote{Minmale configuratie door de beschikbaarheid van voorgetrainde modellen} & Minimale setup, minimale configuratie & kleine setup, grote configuratie& Grote setup, mindere configuratie \\
+        \textbf{SAP integratie} & Out of the box & Moet zelf gedaan worden & Moet zelf gedaan worden \\
+        \textbf{Prijs} & Gratis, met limitaties & Gratis en open source & Gratis en open source \\
+        \bottomrule
+    \end{tabular}
+    \caption{\label{tab:vergelijking}Vergelijking van tools} 
+\end{table}
+
+De gekozen tool in dit onderzoek wordt de Business Entity Recognition dienst van SAP. Dit omdat de integratie met andere tools die SAP aanbied vrij simpel kan verlopen. Door middel van een aantal api calls kan een tekst die moet worden inlezen opgestuurd worden, SAP doet verder het zware werk en geeft een resultaat terug. De grootste nadelen van deze dienst zijn het feit dat het niet gratis blijf als er een groot aantal documenten ingelezen worden en het feit dat deze niet open source is, waardoor fundamentele aanpassing aan de werking van de tool niet erg mogelijk is.
+%\footnotetext{data komt uit documentatie van \href{https://help.sap.com/docs/business-entity-recognition/business-entity-recognition/}{SAP BER}, \href{https://snips-nlu.readthedocs.io/}{Snips NLU}, \href{https://github.com/mit-nlp/MITIE/tree/master/examples}{MITIE}}
+
+\section{Proof of concept}
+Om definitief een antwoord te kunnen te kunnen geven op de onderzoeksvraag uit sectie \ref{ch:inleiding}, zal er een proof of concept opgesteld worden. Deze proof of concept bestaat uit een webapplicatie die een document kan inlezen en hieruit de masterdata kan halen. Deze applicatie zal gebouwd worden doormiddel van SAP Fiori om een frontend te maken die gebruik maakt van de SAP Business Entity Recognition service om documenten op te laden en het gewenste resultaat te behalen.
+\subsection{Benodigde functionaliteiten}
+
+Tijdens het maken van de proof of concept moet er rekening gehouden worden met de verschillende functionaliteiten die de applicatie zeker moet hebben.
+
+\begin{itemize}
+    \item \textbf{Opladen van eigen gebruikersgegevens:} Om ervoor te zorgen dat een andere gebruiker de applicatie kan gebruiken met zijn eigen Business Entity Recognition instance, moet er de mogelijkheid zijn om zijn eigen configuratiebestand op te laden.
+    \item \textbf{Opladen van documenten:} Om een document te laten uitlezen, moet er natuurlijk de mogelijkheid zijn om een document op te laden die gebruikt kan worden.
+    \item \textbf{Eigen dataset maken:} Iedere gebruiker kan een andere interpretatie hebben over wat nu precies nuttige data is in een document. Daarom moet de applicatie de mogelijkheid hebben om een eigen dataset te maken.
+    \item \textbf{dataset kiezen:} Niet elk document is hetzelfde en daarom zou er soms een andere dataset moeten kunnen gekozen worden voor een specefiek document.
+\end{itemize}
+
+\subsection{Doel}
+Het doel van de proof of concept is een mogelijke oplossing maken om masterdata automatisch uit een bedrijfsdocument te halen. Deze oplossing zou in een sap systeem voor verschillende doeleinden kunnen ingezet worden om de workflow te versimpelen. Deze toepassing is bedoeld om een inkijk te kunnen geven hoe dergelijke precies gebouwd worden en hoe Alluvion zelf te werk kan gaan om een eigen applicatie te bouwen.
+
+
+\section{Conclusie}
+Op het einde van het onderzoek zal er een conclusie gegeven worden over de resultaten van het onderzoek en de proof of concept. Hierbij wordt er nagegaan of het onderzoek en de proof of concept de onderzoeksvraagen voldoende beantwoorden.

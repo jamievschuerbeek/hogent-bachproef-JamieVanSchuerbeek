@@ -13,6 +13,8 @@
 
 \usepackage{lipsum} % For blind text, can be removed after adding actual content
 
+\usepackage{listings}
+
 %% Pictures to include in the text can be put in the graphics/ folder
 \graphicspath{{graphics/}}
 
@@ -48,15 +50,27 @@
     texcl=false,
 }
 
+\renewcommand\listoflistingscaption{%
+    \IfLanguageName{dutch}{Lijst van codefragmenten}{List of listings}
+}
+\renewcommand\listingscaption{%
+    \IfLanguageName{dutch}{Codefragment}{Listing}
+}
+\renewcommand*\listoflistings{%
+    \addcontentsline{toc}{chapter}{\listoflistingscaption}%
+    \listof{listing}{\listoflistingscaption}%
+}
+
 % Other packages not already included can be imported here
+
 
 %%---------- Document metadata -------------------------------------------------
 % TODO: Replace this with your own information
-\author{Ernst Aarden}
-\supervisor{Dhr. F. Van Houte}
-\cosupervisor{Mevr. S. Beeckman}
-\title[Optionele ondertitel]%
-    {Titel van de bachelorproef}
+\author{Jamie Van Schuerbeek}
+\supervisor{Mevr. C. De Leenheer}
+\cosupervisor{Dhr. A. Jacobs}
+\title[]%Optionele ondertitel
+    {Machine learning-technologie toepassen om relevante masterdata uit bedrijfsdocumenten te halen}
 \academicyear{\advance\year by -1 \the\year--\advance\year by 1 \the\year}
 \examperiod{1}
 \degreesought{\IfLanguageName{dutch}{Professionele bachelor in de toegepaste informatica}{Bachelor of applied computer science}}
@@ -65,6 +79,11 @@
 
 %% Add global exceptions to the hyphenation here
 \hyphenation{back-slash}
+\hyphenation{tech-no-lo-gie}
+\hyphenation{bed-rijfs-do-cu-men-ten}
+\hyphenation{toe-pas-sen}
+\hyphenation{op-ti-ma-li-se-ren}
+\hyphenation{Fi-o-ri-ont-werp-richt-lij-nen}
 
 %% The bibliography (style and settings are  found in hogentthesis.cls)
 \addbibresource{bachproef.bib}            %% Bibliography file
@@ -115,8 +134,8 @@
 
 % If you included tables and/or source code listings, uncomment the appropriate
 % lines.
-%\listoftables
-%\listoflistings
+\listoftables
+\listoflistings
 
 % Als je een lijst van afkortingen of termen wil toevoegen, dan hoort die
 % hier thuis. Gebruik bijvoorbeeld de ``glossaries'' package.
@@ -139,6 +158,8 @@
 % Voeg hier je eigen hoofdstukken toe die de ``corpus'' van je bachelorproef
 % vormen. De structuur en titels hangen af van je eigen onderzoek. Je kan bv.
 % elke fase in je onderzoek in een apart hoofdstuk bespreken.
+
+\input{proofofconcept}
 
 %\input{...}
 %\input{...}
@@ -173,5 +194,4 @@ Het onderwerp van deze bachelorproef is gebaseerd op een onderzoeksvoorstel dat 
 
 \setlength\bibitemsep{2pt} %% Add Some space between the bibliograpy entries
 \printbibliography[heading=bibintoc]
-
 \end{document}
